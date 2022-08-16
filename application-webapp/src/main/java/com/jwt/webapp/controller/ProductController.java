@@ -1,4 +1,4 @@
-package com.jwt.webapp.product;
+package com.jwt.webapp.controller;
 
 import java.util.List;
 

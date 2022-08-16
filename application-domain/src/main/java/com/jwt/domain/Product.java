@@ -1,4 +1,4 @@
-package com.jwt.domain.product;
+package com.jwt.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

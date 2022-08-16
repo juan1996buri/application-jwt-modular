@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jwt.common.service.ResourceNotFoundException;
-import com.jwt.domain.product.Product;
+import com.jwt.domain.Product;
 import com.jwt.dto.product.ProductDTO;
 import com.jwt.repository.ProductRepository;
 import com.jwt.service.GenericCRUDServiceImpl;
