@@ -7,11 +7,6 @@
 	</parent>
 	<groupId>com.jwt.domain</groupId>
 	<artifactId>application-domain</artifactId>
-	<dependencies>
-		<dependency>
-			<groupId>com.jwt.security</groupId>
-			<artifactId>application-security</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+	<dependencies>		
 	</dependencies>
 </project>
