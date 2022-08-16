@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jwt.common.dto.ApiResponseDTO;
-import com.jwt.dto.product.ProductDTO;
+import com.jwt.dto.ProductDTO;
 import com.jwt.service.product.ProductService;
 
 

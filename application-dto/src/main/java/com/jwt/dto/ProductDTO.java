@@ -1,4 +1,4 @@
-package com.jwt.dto.product;
+package com.jwt.dto;
 
 import lombok.Data;
 
