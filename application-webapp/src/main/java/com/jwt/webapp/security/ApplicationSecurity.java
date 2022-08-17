@@ -33,7 +33,7 @@ public class ApplicationSecurity {
 		http.csrf().disable();
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
-		http.authorizeRequests().antMatchers("/user/**", "/users").permitAll().anyRequest().authenticated();
+		http.authorizeRequests().antMatchers("/user/**", "/roles").permitAll().anyRequest().authenticated();
 		
 		http.exceptionHandling().authenticationEntryPoint((request, response, ex) -> {
 			response.sendError(HttpServletResponse.SC_UNAUTHORIZED, ex.getMessage());

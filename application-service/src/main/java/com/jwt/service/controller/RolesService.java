@@ -16,9 +16,9 @@ public class RolesService extends GenericCRUDServiceImpl<Roles, RolesDTO> {
 
 	@Autowired
 	private RolesRepository repository;
-	
-	private ModelMapper modelMapper;
-	
+
+	private ModelMapper modelMapper = new ModelMapper();
+
 	@Override
 	public Optional<Roles> find(RolesDTO dto) {
 		return repository.findById(dto.getId());
