@@ -1,5 +1,8 @@
 package com.jwt.dto;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
@@ -19,5 +22,7 @@ public class UserDTO {
 	@NotNull
 	@Length(min = 3,max = 20)
 	private String password;
+	
+	private Set<RolesDTO> roles=new HashSet<RolesDTO>();
 	
 }
