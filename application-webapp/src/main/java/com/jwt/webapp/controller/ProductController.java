@@ -17,15 +17,12 @@ import com.jwt.common.dto.ApiResponseDTO;
 import com.jwt.dto.ProductDTO;
 import com.jwt.service.controller.ProductService;
 
-
-
 @RestController
 @RequestMapping(value = "/product")
 public class ProductController {
 	
 	@Autowired
-	private ProductService service;
-	
+	private ProductService service;	
 
 	@PostMapping
 	@RolesAllowed({"ROLE_ADMIN"})

@@ -13,8 +13,6 @@ import com.jwt.dto.ProductDTO;
 import com.jwt.repository.ProductRepository;
 import com.jwt.service.GenericCRUDServiceImpl;
 
-
-
 @Service
 public class ProductService extends GenericCRUDServiceImpl<Product, ProductDTO> {
 

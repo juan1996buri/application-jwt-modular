@@ -12,8 +12,6 @@ import org.springframework.stereotype.Service;
 
 import com.jwt.common.ApiException;
 
-
-
 @Service
 public abstract class GenericCRUDServiceImpl<DOMAIN, DTO> implements GenericCrudService<DOMAIN, DTO> {
 
@@ -48,9 +46,7 @@ public abstract class GenericCRUDServiceImpl<DOMAIN, DTO> implements GenericCrud
 		ExampleMatcher matcher = ExampleMatcher.matching().withIgnoreNullValues().withIgnorePaths("id");
 		List<DOMAIN> objList = repository.findAll(Example.of(domain, matcher));
 		return objList.stream().map(obj -> mapToDto(obj)).collect(Collectors.toList());
-	}
-	
-	
+	}	
 
 	@Override
 	public abstract DOMAIN mapToDomain(DTO dto);

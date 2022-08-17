@@ -16,6 +16,4 @@ public interface GenericCrudService<DOMAIN, DTO> {
 	DOMAIN mapToDomain(DTO dto);
 
 	DTO mapToDto(DOMAIN domain);
-
-
 }

@@ -18,5 +18,4 @@ public class ApiResponseDTO<T> implements Serializable {
 
 	@NotNull
 	private T result;
-
 }

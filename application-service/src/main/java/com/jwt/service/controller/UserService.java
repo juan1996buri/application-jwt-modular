@@ -33,5 +33,4 @@ public class UserService extends GenericCRUDServiceImpl<User, UserDTO> {
 	public User mapToDomain(UserDTO dto) {
 		return modelMapper.map(dto, User.class);
 	}
-
 }

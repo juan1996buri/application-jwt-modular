@@ -24,7 +24,5 @@ public class Roles {
 	@Override
 	public String toString() {
 		return name;
-	}
-	
-	
+	}	
 }
