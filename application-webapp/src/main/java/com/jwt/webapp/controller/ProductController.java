@@ -2,6 +2,8 @@ package com.jwt.webapp.controller;
 
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +28,7 @@ public class ProductController {
 	
 
 	@PostMapping
+	@RolesAllowed({"ROLE_ADMIN"})
 	public ResponseEntity<Object> save(@RequestBody ProductDTO dto) {				
 		return new ResponseEntity<>(new ApiResponseDTO<>(true,service.save(dto) ), HttpStatus.CREATED);
 	}
