@@ -19,4 +19,5 @@ public class UserDTO {
 	@NotNull
 	@Length(min = 3,max = 20)
 	private String password;
+	
 }

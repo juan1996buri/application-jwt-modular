@@ -5,6 +5,9 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,8 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jwt.common.dto.ApiResponseDTO;
+import com.jwt.domain.User;
+import com.jwt.domain.UserLogin;
 import com.jwt.dto.UserDTO;
 import com.jwt.service.controller.UserService;
+import com.jwt.webapp.security.JwtTokenUtil;
 
 @RestController
 @RequestMapping(value = "/user")
@@ -25,10 +31,30 @@ public class UserController {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
+	@Autowired
+	private AuthenticationManager authenticationManager;
+	
+	@Autowired
+	private JwtTokenUtil jwUtil;
+	
 	@PostMapping
 	public ResponseEntity<Object> save(@RequestBody @Valid UserDTO dto){
 		dto.setPassword(passwordEncoder.encode(dto.getPassword()));		
 		return new ResponseEntity<>(new ApiResponseDTO<>(true,service.save(dto)),HttpStatus.CREATED);
+	}
+	
+	@PostMapping("/login")
+	public ResponseEntity<Object> login(@RequestBody UserLogin userLogin){
+		try {
+			Authentication authentication=authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userLogin.getEmail(), userLogin.getPassword()));
+			User user=(User) authentication.getPrincipal();
+			String token=jwUtil.generateAccessToken(user);
+			userLogin.setPassword("");
+			userLogin.setToken(token);
+			return new ResponseEntity<>(new ApiResponseDTO<>(true, userLogin),HttpStatus.OK);
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		}
 	}
 	
 }
